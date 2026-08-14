@@ -4,6 +4,6 @@ from typing import Optional
 
 @dataclass
 class Item:
-    id: int | None
+    id: int | None = None
     title: str
     description: Optional[str] = None
