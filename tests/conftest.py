@@ -3,9 +3,9 @@ from typing import AsyncGenerator
 from httpx import AsyncClient, ASGITransport
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 
-from src.main import app
-from src.infrastructure.db.models import Base
-from src.api.dependencies import get_db
+from ..src.main import app
+from ..src.infrastructure.db.models import Base
+from ..src.api.dependencies import get_db
 
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
 
