@@ -1,7 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+
+from src.domain.entities.item import Item
 from src.api.dependencies import get_item_use_cases
 from src.api.schemas import ItemCreate, ItemResponse
 from src.use_cases.item_repo import ItemUOW
+
 
 router = APIRouter(prefix="/items", tags=["Items"])
 
@@ -11,7 +14,7 @@ async def create_item(
     item_in: ItemCreate,
     use_cases: ItemUOW = Depends(get_item_use_cases)
 ):
-    return await use_cases.create(title=item_in.title, description=item_in.description)
+    return await use_cases.create(Item(title=item_in.title, description=item_in.description))
 
 
 @router.get("/{item_id}", response_model=ItemResponse)
