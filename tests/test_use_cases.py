@@ -39,7 +39,7 @@ class FakeItemRepository(ItemInterface):
 async def test_create_item_use_case():
     repo = FakeItemRepository()
     use_case = ItemUOW(repo)
-    created_item = await use_case.create(title="Test", description="Desc")
+    created_item = await use_case.create(Item(title="Test", description="Desc"))
 
     assert created_item.id == 1
     assert created_item.title == "Test"
