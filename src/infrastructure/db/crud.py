@@ -1,9 +1,9 @@
 from typing import Optional
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from domain.entities.item import Item
-from domain.interfaces.item_interface import ItemInterface
-from infrastructure.db.models import ItemModel
+from src.domain.entities.item import Item
+from src.domain.interfaces.item_interface import ItemInterface
+from src.infrastructure.db.models import ItemModel
 
 
 class SQLAlchemyItemRepo(ItemInterface):

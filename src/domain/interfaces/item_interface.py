@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from domain.entities.item import Item
+from src.domain.entities.item import Item
 
 
 class ItemInterface(Protocol):

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from api.dependencies import get_item_use_cases
-from api.schemas import ItemCreate, ItemResponse
-from use_cases.item_repo import ItemUOW
+from src.api.dependencies import get_item_use_cases
+from src.api.schemas import ItemCreate, ItemResponse
+from src.use_cases.item_repo import ItemUOW
 
 router = APIRouter(prefix="/items", tags=["Items"])
 

@@ -1,9 +1,9 @@
 from typing import AsyncGenerator
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
-from infrastructure.db.conn import async_session
-from infrastructure.db.crud import SQLAlchemyItemRepo
-from use_cases.item_repo import ItemUOW
+from src.infrastructure.db.conn import async_session
+from src.infrastructure.db.crud import SQLAlchemyItemRepo
+from src.use_cases.item_repo import ItemUOW
 
 
 async def get_db() -> AsyncGenerator[AsyncSession, None]:

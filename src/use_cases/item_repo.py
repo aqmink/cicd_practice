@@ -1,7 +1,7 @@
 from typing import Protocol
 
-from domain.interfaces.item_interface import ItemInterface
-from domain.entities.item import Item
+from src.domain.interfaces.item_interface import ItemInterface
+from src.domain.entities.item import Item
 
 
 class ItemUOW(Protocol):
