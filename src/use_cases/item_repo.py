@@ -9,7 +9,7 @@ class ItemUOW(Protocol):
         self.interface = interface
 
     async def get_by_id(self, id: int) -> Item:
-        return await self.interface.get(id=id)
+        return await self.interface.get(value=id)
 
     async def create(self, item: Item) -> Item:
         return await self.interface.create(item)
