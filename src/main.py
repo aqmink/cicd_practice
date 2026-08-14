@@ -2,8 +2,8 @@ from contextlib import asynccontextmanager
 import uvicorn
 from fastapi import FastAPI
 from src.api.router import router as item_router
-from infrastructure.db.conn import engine
-from infrastructure.db.models import Base
+from src.infrastructure.db.conn import engine
+from src.infrastructure.db.models import Base
 
 
 @asynccontextmanager
