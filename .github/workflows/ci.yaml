@@ -31,15 +31,26 @@ jobs:
       - name: Run Tests
         run: |
           pytest -v
-
-  build:
+  
+  deploy:
     needs: lint-and-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    
     steps:
-      - name: Check out repo
-        uses: actions/checkout@v4.2.2
+      - name: Deploy to PythonAnywhere via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.PA_HOST }}
+          username: ${{ secrets.PA_USERNAME }}
+          key: ${{ secrets.PA_SSH_KEY }}
+          script: |
+            cd my_app
+            git pull origin main
+            source venv/bin/activate
+            pip install -r requirements.txt
 
-      - name: Build Docker Image Check
+      - name: Reload PythonAnywhere Web App via API
         run: |
-          docker build -t test-build:${{ github.sha }} .
+          curl -X POST "https://www.pythonanywhere.com/api/v0/user/${{ secrets.PA_USERNAME }}/webapps/${{ secrets.PA_USERNAME }}.pythonanywhere.com/reload/" \
+            -H "Authorization: Token ${{ secrets.PA_API_TOKEN }}
